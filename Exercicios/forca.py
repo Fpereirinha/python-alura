@@ -11,7 +11,9 @@ def jogo_forca():
     resp = ""
     for letra in nome[indice]:
         letras_separadas.append(letra.upper())
+        letras_acertadas.append("_")
     print(letras_separadas)
+    print(letras_acertadas)
     print('*'*20)
     print('Jogo da Forca')
     print('*'*20)
@@ -29,12 +31,16 @@ def jogo_forca():
             break
         elif resp in letras_separadas:
             print("Letra dentro da palavra !! Parabéns !")
-            letras_acertadas.append(resp)
+            for c, letra in enumerate(letras_separadas):
+                if letra == resp:
+                    letras_acertadas[c] = letra
+            print(letras_acertadas)
             while True:
                 resp = input("Digite mais uma letra, sem disperdiçar a chances: ").upper().strip()
                 if resp in letras_separadas and resp not in letras_acertadas:
-                    print("Parabens, acertou novamente")
-                    letras_acertadas.append(resp)
+                    for c, letra in enumerate(letras_separadas):
+                        if letra == resp:
+                            letras_acertadas[c] = letra
                     print(letras_acertadas)
                 elif resp == palavra_secreta:
                     print("Parabens você venceu !")
