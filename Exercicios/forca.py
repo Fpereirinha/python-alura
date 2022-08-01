@@ -11,9 +11,6 @@ def jogo_forca():
     chances = 5
     letras_acertadas = ["_" for letra in palavra_secreta]
     resp = ""
-    '''for letra in nome[indice]:
-        palavra_secreta.append(letra.upper())
-        letras_acertadas.append("_")'''
     print(palavra_secreta)
     print(letras_acertadas)
     print('*'*20)
