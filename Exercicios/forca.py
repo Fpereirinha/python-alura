@@ -2,6 +2,8 @@ from random import randint
 
 
 def jogo_forca():
+    '''    with open("palavras.txt") as arquivo:
+        nomes = [linha.strip() for linha in arquivo]'''
     arquivo = open("palavras.txt", "r")
     nomes = [linha.strip() for linha in arquivo]
     arquivo.close()
