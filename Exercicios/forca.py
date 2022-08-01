@@ -2,7 +2,7 @@ from random import randint
 
 
 def jogo_forca():
-    nome = ["Pedro", "João", "Lucas", "Sabrina"]
+    nome = ["Pedro", "Joao", "Lucas", "Sabrina"]
     indice = randint(0, len(nome)-1)
     palavra_secreta = nome[indice].upper()
     letras_separadas = []
@@ -34,14 +34,18 @@ def jogo_forca():
             for c, letra in enumerate(letras_separadas):
                 if letra == resp:
                     letras_acertadas[c] = letra
-            print(letras_acertadas)
+            for letra in letras_acertadas:
+                print(f'{letra}', end='')
+            print('')
             while True:
                 resp = input("Digite mais uma letra, sem disperdiçar a chances: ").upper().strip()
                 if resp in letras_separadas and resp not in letras_acertadas:
                     for c, letra in enumerate(letras_separadas):
                         if letra == resp:
                             letras_acertadas[c] = letra
-                    print(letras_acertadas)
+                    for letra in letras_acertadas:
+                        print(f'{letra}', end='')
+                    print('')
                 elif resp == palavra_secreta:
                     print("Parabens você venceu !")
                     break
