@@ -2,9 +2,13 @@ from random import randint
 
 
 def jogo_forca():
-    nome = ["Pedro", "Joao", "Lucas", "Sabrina"]
-    indice = randint(0, len(nome)-1)
-    palavra_secreta = nome[indice].upper()
+    'nome = ["Pedro", "Joao", "Lucas", "Sabrina"]'
+    arquivo = open("palavras.txt", "r")
+    nomes = [linha.strip() for linha in arquivo]
+    arquivo.close()
+    indice = randint(0, len(nomes) - 1)
+    palavra_secreta = nomes[indice].upper()
+    print(nomes)
     chances = 5
     letras_acertadas = ["_" for letra in palavra_secreta]
     resp = ""
@@ -40,7 +44,7 @@ def jogo_forca():
                 if resp == palavra_secreta or letras_acertadas.count("_") == 0:
                     print("Parabens você venceu !")
                     break
-                resp = input("Digite mais uma letra, sem disperdiçar a chances: ").upper().strip()
+                resp = input("Digite mais uma letra, sem disperdiçar chances: ").upper().strip()
                 if resp in palavra_secreta and resp not in letras_acertadas:
                     for c, letra in enumerate(palavra_secreta):
                         if letra == resp:
