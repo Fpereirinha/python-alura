@@ -6,8 +6,7 @@ def jogo_forca():
     arquivo = open("palavras.txt", "r")
     nomes = [linha.strip() for linha in arquivo]
     arquivo.close()
-    indice = randint(0, len(nomes) - 1)
-    palavra_secreta = nomes[indice].upper()
+    palavra_secreta = nomes[randint(0, len(nomes) - 1)].upper()
     print(nomes)
     chances = 5
     letras_acertadas = ["_" for letra in palavra_secreta]
