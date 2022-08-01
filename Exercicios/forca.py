@@ -22,7 +22,7 @@ def jogo_forca():
           f'e possui {len(letras_separadas)} letras.')
     print("Você possui 5 chances para acertar !")
     for x in range(chances):
-        if resp == palavra_secreta:
+        if resp == palavra_secreta or letras_acertadas.count("_") == 0:
             break
         print(f"Tentativa {x+1} de {chances}")
         resp = input("Digite uma letra para tentar acertar, ou a palavra completa: ").upper().strip()
@@ -35,26 +35,26 @@ def jogo_forca():
                 if letra == resp:
                     letras_acertadas[c] = letra
             for letra in letras_acertadas:
-                print(f'{letra}', end='')
+                print(f'{letra}  ', end='')
             print('')
             while True:
+                if resp == palavra_secreta or letras_acertadas.count("_") == 0:
+                    print("Parabens você venceu !")
+                    break
                 resp = input("Digite mais uma letra, sem disperdiçar a chances: ").upper().strip()
                 if resp in letras_separadas and resp not in letras_acertadas:
                     for c, letra in enumerate(letras_separadas):
                         if letra == resp:
                             letras_acertadas[c] = letra
                     for letra in letras_acertadas:
-                        print(f'{letra}', end='')
+                        print(f'{letra}  ', end='')
                     print('')
-                elif resp == palavra_secreta:
-                    print("Parabens você venceu !")
-                    break
                 else:
                     print("letra ja na lista ou errada !")
                     break
         else:
             print("letra não encontrada.")
-    if resp != palavra_secreta:
+    if resp != palavra_secreta and letras_acertadas.count("_"):
         print("Você perdeu, obrigado por jogar !")
 
 
