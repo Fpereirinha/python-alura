@@ -1,23 +1,23 @@
 class Conta:
     def __init__(self, numero, titular, saldo, limite):
-        self.numero = numero
-        self.titula = titular
-        self.saldo = saldo
-        self.limite = limite
+        self.__numero = numero
+        self.__titula = titular
+        self.__saldo = saldo
+        self.__limite = limite
 
     def depositar(self, valor):
-        self.saldo += valor
+        self.__saldo += valor
 
     def sacar(self, valor):
-        self.saldo -= valor
+        self.__saldo -= valor
 
     def extrato(self):
-        print(f'Conta: {self.numero} Titular: {self.titula} Saldo: {self.saldo} Limite: {self.limite}')
+        print(f'Conta: {self.__numero} Titular: {self.__titula} Saldo: {self.__saldo} Limite: {self.__limite}')
 
     def transferir(self, conta, valor):
-        if self.saldo >= valor:
-            self.saldo -= valor
-            conta.saldo += valor
+        if self.__saldo >= valor:
+            self.__saldo -= valor
+            conta.__saldo += valor
         else:
             print("Não foi possivel realizar a transferencia.")
 
@@ -33,6 +33,8 @@ c.extrato()
 c.transferir(c2, 300)
 c.extrato()
 c2.extrato()
+c2.sacar(22)
+
 
 
 
