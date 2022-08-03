@@ -16,8 +16,9 @@ class Conta:
 
     def transferir(self, conta, valor):
         if self.__saldo >= valor:
-            self.__saldo -= valor
-            conta.__saldo += valor
+            self.sacar(valor)
+            conta.depositar(valor)
+            print("Transferência efetuada com sucesso.")
         else:
             print("Não foi possivel realizar a transferencia.")
 
@@ -34,7 +35,6 @@ c.transferir(c2, 300)
 c.extrato()
 c2.extrato()
 c2.sacar(22)
-
 
 
 
