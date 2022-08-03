@@ -19,19 +19,16 @@ class Programa:
     def nome(self, nome):
         self._nome = nome.title()
 
+
 class Filme(Programa):
-    def __init__(self,nome,ano,duracao):
-        super().__init__(nome,ano)
+    def __init__(self, nome, ano, duracao):
+        super().__init__(nome, ano)
         self._duracao = duracao
-
-
-
-
 
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        super().__init__(nome,ano)
+        super().__init__(nome, ano)
         self._temporadas = temporadas
 
 
