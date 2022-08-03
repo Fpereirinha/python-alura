@@ -63,8 +63,7 @@ class Playlist():
     def programas(self):
         return self.__programas
 
-    @property
-    def tamanho(self):
+    def __len__(self):
         return len(self.programas)
 
 
@@ -83,4 +82,3 @@ pl_fim_de_semana = Playlist("Fim de Semana", filmes_e_series)
 
 for count, programa in enumerate(pl_fim_de_semana):
     print(f'{pl_fim_de_semana.nome} {count+1}° {programa}')
-print(f3 in pl_fim_de_semana)

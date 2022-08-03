@@ -1,2 +1,2 @@
-class Serie:
-    pass
+from abc import ABC ##abstract base classes
+
