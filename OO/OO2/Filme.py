@@ -12,6 +12,10 @@ class Programa:
         self._like += 1
 
     @property
+    def ano(self):
+        return self._ano
+
+    @property
     def nome(self):
         return self._nome
 
@@ -23,17 +27,35 @@ class Programa:
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
-        self._duracao = duracao
+        self.__duracao = duracao
+
+    @property
+    def duracao(self):
+        return self.__duracao
+
+    def __str__(self):
+        return f'{self.nome} {self.ano} {self.duracao} {self.like}'
 
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
-        self._temporadas = temporadas
+        self.__temporadas = temporadas
+
+    @property
+    def temporadas(self):
+        return self.__temporadas
+
+    def __str__(self):
+        return f'{self.nome} {self.ano} {self.temporadas} {self.like}'
 
 
-f2 = Filme('Jonas', 22, 3)
-f1 = Filme("astro nauta", 22, 2)
-print(f1.nome)
-f1.nome = 'joao doido'
-print(f1.nome)
+s1 = Serie("Gotham", 2019, 2)
+f2 = Filme('Filme2', 2022, 322)
+f1 = Filme("Filme1", 2022, 233)
+
+
+filmes_e_series = [f2, f1, s1]
+
+for programa in filmes_e_series:
+    print(programa)
