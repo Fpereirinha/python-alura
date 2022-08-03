@@ -21,6 +21,12 @@ class Conta:
             print("Transferência efetuada com sucesso.")
         else:
             print("Não foi possivel realizar a transferencia.")
+    def get_saldo(self):
+        return self.__saldo
+    def set_limite(self, valor):
+        self.__limite += valor
+    def get_limite(self):
+        return self.__limite
 
 
 c = Conta(123,"pedro", 20, 1000)
@@ -35,6 +41,10 @@ c.transferir(c2, 300)
 c.extrato()
 c2.extrato()
 c2.sacar(22)
+c2.set_limite(500)
+print(c2.get_limite())
+
+x = c.get_saldo() + c2.get_saldo()
 
 
 
