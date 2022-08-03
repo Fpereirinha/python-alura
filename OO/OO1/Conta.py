@@ -1,5 +1,6 @@
 from cliente import Cliente
 class Conta:
+    cod = 1
     def __init__(self, numero, titular, saldo, limite):
         self.__numero = numero
         self.__titula = titular
@@ -45,6 +46,8 @@ class Conta:
     @staticmethod
     def codigo_banco():
         return f'{1:03}'
+    cod2 = 2
+
 
 
 
@@ -72,6 +75,7 @@ c3 = Conta(55,'pedro', 500, 500)
 c3.sacar(900)
 c3.extrato()
 print(Conta.codigo_banco())
+print(Conta.cod, Conta.cod2)
 
 
 
