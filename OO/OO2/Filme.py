@@ -1,48 +1,42 @@
-class Filme:
-    def __init__(self, nome, ano, duracao):
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__duracao = duracao
-        self.__like = 0
+class Programa:
+    def __init__(self, nome, ano):
+        self._like = 0
+        self._nome = nome.title()
+        self._ano = ano
 
     @property
     def like(self):
-        return self.__like
+        return self._like
 
     def dar_like(self):
-        self.__like += 1
+        self._like += 1
 
     @property
     def nome(self):
-        return self.__nome
+        return self._nome
 
     @nome.setter
     def nome(self, nome):
-        self.__nome = nome.title()
+        self._nome = nome.title()
+
+class Filme(Programa):
+    def __init__(self,nome,ano,duracao):
+        super().__init__(nome,ano)
+        self._duracao = duracao
 
 
-class Serie:
+
+
+
+
+class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        self.__like = 0
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__temporadas = temporadas
-
-    @property
-    def like(self):
-        return self.__like
-
-    def dar_like(self):
-        self.__like += 1
-
-    @property
-    def nome(self):
-        return self.__nome
-
-    @nome.setter
-    def nome(self, nome):
-        self.__nome = nome.title()
+        super().__init__(nome,ano)
+        self._temporadas = temporadas
 
 
+f2 = Filme('Jonas', 22, 3)
 f1 = Filme("astro nauta", 22, 2)
+print(f1.nome)
+f1.nome = 'joao doido'
 print(f1.nome)
