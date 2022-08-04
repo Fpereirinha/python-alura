@@ -25,6 +25,21 @@ class ExtractorUrl:
         if not match:
             raise ValueError("Url inválida")
 
+    def conversor(self):
+        cotacao = 0
+        quantidade = self.buscar_parametro('quantidade')
+        origem = self.buscar_parametro('moedaOrigem').title()
+        destino = self.buscar_parametro('moedaDestino').title()
+        if origem == 'Dolar':
+            cotacao = 5.5
+        elif origem == 'Euro':
+            cotacao = 6
+        elif origem == 'Bitcoin':
+            cotacao = 100000
+        else:
+            raise ValueError("Não reconheço essa moeda.")
+        return f'O valor convertido de {quantidade} {origem} para {destino} é R${int(quantidade) * cotacao}.'
+
     @property
     def url_base(self):
         indice_interrogacao = self.url.find('?')
@@ -49,9 +64,9 @@ class ExtractorUrl:
         return valor
 
 
-site1 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar')
-site2 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar')
+site1 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=dolar&moedaDestino=real')
+site2 = ExtractorUrl('www.bytebank.com/cambio?quantidade=500&moedaOrigem=dolar&moedaDestino=real')
 print(len(site1))
 print(site1)
 print(site1 == site2)
-print(site1.buscar_parametro('quantidade'))
+print(site1.conversor())
