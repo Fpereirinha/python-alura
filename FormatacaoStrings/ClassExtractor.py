@@ -1,19 +1,36 @@
+import re
+
+
 class ExtractorUrl:
     def __init__(self, url):
         self.url = url.strip() if type(url) == str else ''
         self.valida_url()
 
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        return f'Url parametros: {self.url_parametros}\n' \
+               f'Url completa: {self.url_base}'
+
+    def __eq__(self, other):
+        return self.url == other.url
+
     def valida_url(self):
         if not self.url:
             raise ValueError("Url vazia.")
-        if not self.url.startswith('www') and not self.url.startswith('https'):
-            raise ValueError("url inválida")
+
+        padrao_url = re.compile('(http(s)?://)?(www.)?bytebank.com(.br)?/cambio')
+        match = padrao_url.match(self.url)
+        if not match:
+            raise ValueError("Url inválida")
 
     @property
     def url_base(self):
         indice_interrogacao = self.url.find('?')
         url_base = self.url[:indice_interrogacao]
         return url_base
+
     @property
     def url_parametros(self):
         indice_interrogacao = self.url.find('?')
@@ -33,8 +50,8 @@ class ExtractorUrl:
 
 
 site1 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar')
-
-
+site2 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar')
+print(len(site1))
+print(site1)
+print(site1 == site2)
 print(site1.buscar_parametro('quantidade'))
-
-
