@@ -64,7 +64,7 @@ class ExtractorUrl:
         return valor
 
 
-site1 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=dolar&moedaDestino=real')
+site1 = ExtractorUrl('www.bytebank.com/cambio?quantidade=100&moedaOrigem=euro&moedaDestino=real')
 site2 = ExtractorUrl('www.bytebank.com/cambio?quantidade=500&moedaOrigem=dolar&moedaDestino=real')
 print(len(site1))
 print(site1)
