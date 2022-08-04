@@ -38,7 +38,7 @@ class ExtractorUrl:
             cotacao = 100000
         else:
             raise ValueError("Não reconheço essa moeda.")
-        return f'O valor convertido de {quantidade} {origem} para {destino} é R${int(quantidade) * cotacao}.'
+        return f'O valor convertido de {quantidade} {origem} para {destino} é R${int(quantidade) * cotacao:.2f}.'
 
     @property
     def url_base(self):
