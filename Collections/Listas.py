@@ -44,6 +44,8 @@ class ContaSalario:
         self.saldo += valor
 
     def __eq__(self, other):
+        if type(other) != ContaSalario:
+            return False
         return self.saldo == other.saldo and self.conta == other.conta
 
 
@@ -75,3 +77,6 @@ print(ContaTeste2 and c1 in x)
 print(ContaTeste2 in x)
 print(ContaTeste == ContaTeste2)
 print(ContaTeste == ContaTeste3)
+ContaTeste.deposita(20)
+print(ContaTeste == ContaTeste2)
+'Instance of !!!! <<< Metodo importante em EQ'
