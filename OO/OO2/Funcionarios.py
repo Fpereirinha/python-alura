@@ -23,6 +23,7 @@ class Alura(Funcionario):
 
 
 class Return_name:
+    nome = None
     def __str__(self):
         return f'Olá {self.nome}'
 
