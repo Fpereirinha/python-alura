@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABCMeta
+from operator import attrgetter
 
 
 class Conta(metaclass=ABCMeta):
@@ -15,6 +16,9 @@ class Conta(metaclass=ABCMeta):
 
     def __str__(self):
         return f'[Código: {self.conta} Saldo: {self.saldo}]'
+
+    def __lt__(self, other):
+        return self.saldo < other.saldo
 
 
 class ContaCorrente(Conta):
@@ -48,6 +52,9 @@ class ContaSalario:
             return False
         return self.saldo == other.saldo and self.conta == other.conta
 
+    def __lt__(self, other):
+        return self.saldo < other.saldo
+
 
 def deposita_all(lista_de_contas, valor):
     for conta in lista_de_contas:
@@ -80,3 +87,17 @@ print(ContaTeste == ContaTeste3)
 ContaTeste.deposita(20)
 print(ContaTeste == ContaTeste2)
 'Instance of !!!! <<< Metodo importante em EQ'
+x = [1, 88, 7, 2, 69, 54, 2, 5, 1, 51, 52]
+print(sorted(x))
+for v in sorted(x):
+    print(v)
+
+lc2 = [c, c1, c2, ContaTeste, ContaTeste2, ContaTeste3]
+'''for conta in sorted(lc2, key=attrgetter('saldo')):
+    print(conta)'''
+for conta in sorted(lc2):
+    print(conta)
+
+print('*'*50)
+for conta in sorted(lc2, reverse=True):
+    print(conta)
