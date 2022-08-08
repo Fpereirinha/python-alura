@@ -1,7 +1,9 @@
 from abc import abstractmethod, ABCMeta
 from operator import attrgetter
+from functools import total_ordering
 
 
+@total_ordering
 class Conta(metaclass=ABCMeta):
     def __init__(self, conta):
         self.conta = conta
@@ -18,6 +20,8 @@ class Conta(metaclass=ABCMeta):
         return f'[Código: {self.conta} Saldo: {self.saldo}]'
 
     def __lt__(self, other):
+        if self.saldo == other.saldo:
+            return self.conta < other.conta
         return self.saldo < other.saldo
 
 
@@ -36,6 +40,7 @@ class ContaInvestimento(Conta):
     pass
 
 
+@total_ordering
 class ContaSalario:
     def __init__(self, codigo):
         self.conta = codigo
@@ -53,6 +58,8 @@ class ContaSalario:
         return self.saldo == other.saldo and self.conta == other.conta
 
     def __lt__(self, other):
+        if self.saldo == other.saldo:
+            return self.conta < other.conta
         return self.saldo < other.saldo
 
 
@@ -93,7 +100,8 @@ for v in sorted(x):
     print(v)
 
 lc2 = [c, c1, c2, ContaTeste, ContaTeste2, ContaTeste3]
-'''for conta in sorted(lc2, key=attrgetter('saldo')):
+'''for conta in sorted(lc2, key=attrgetter('saldo')):   // key=attrgetter(primeiro_parametro, segundo_parametro) // sald
+o / codigo
     print(conta)'''
 for conta in sorted(lc2):
     print(conta)
