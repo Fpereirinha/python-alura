@@ -25,7 +25,7 @@ class Telefone():
     def __str__(self):
         padrao = '([0-9]{2})([0-9]{2})([ ])?([0-9]{4,5})([-])?([0-9]{4})$'
         telefone = re.search(padrao, self.telefone)
-        return '+{} {} {}-{}'.format(telefone.group(1), telefone.group(2), telefone.group(4), telefone.group(6))
+        return '+{} ({}) {}-{}'.format(telefone.group(1), telefone.group(2), telefone.group(4), telefone.group(6))
 
 
 x1 = Telefone('5511 98506-1267')
